@@ -26,7 +26,8 @@ jobs:
         run: python Selenium-Template.py
 
       - name: More The Results
-        run: more auction.csv      
+        run: |
+          more auction.csv      
         
       - name: Commit and Push The Results From Python Selenium Action
         run: |
