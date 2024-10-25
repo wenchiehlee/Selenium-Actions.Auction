@@ -57,8 +57,10 @@ element = driver.find_element(by=By.CLASS_NAME, value="csv")
 element.click()
 time.sleep(2)
 
+driver.get_screenshot_as_file("page.png")
 latestDownloadedFileName = getDownLoadedFileName() 
 time.sleep(2)
+driver.get_screenshot_as_file("page1.png")
 getDownLoadedFileNameClose()
 DownloadedFilename=''.join(latestDownloadedFileName).encode().decode("utf-8")
 
