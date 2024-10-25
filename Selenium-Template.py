@@ -29,7 +29,7 @@ def getDownLoadedFileName():
     return driver.execute_script("return document.querySelector('downloads-manager').shadowRoot.querySelector('#downloadsList downloads-item').shadowRoot.querySelector('div#content  #file-link').text")
  
   
-downloadDir = f"{os.getcwd()}\\"
+downloadDir = f"{os.getcwd()}//"
 preferences = {"download.default_directory": downloadDir,
                 "download.prompt_for_download": False,
                 "directory_upgrade": True,
