@@ -30,7 +30,6 @@ def getDownLoadedFileName():
  
   
 downloadDir = f"{os.getcwd()}\\"
-print("Download path=",downloadDir)
 preferences = {"download.default_directory": downloadDir,
                 "download.prompt_for_download": False,
                 "directory_upgrade": True,
@@ -53,8 +52,8 @@ driver = webdriver.Chrome(options = chrome_options)
 #    f.write(f"This was written with a GitHub action {driver.title}")
 
 driver.get('https://www.twse.com.tw/zh/announcement/auction.html')
+time.sleep(2)
 element = driver.find_element(by=By.CLASS_NAME, value="csv")
-
 element.click()
 time.sleep(2)
 
