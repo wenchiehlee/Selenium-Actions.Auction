@@ -2,7 +2,7 @@
 
 ## Credit
 
-Forked from [MarketingPipeline/Python-Selenium-Action](https://github.com/MarketingPipeline/Python-Selenium-Action) and use to update dialy on a TAIWAN auction site on https://www.twse.com.tw/zh/announcement/auction.html and download the CSV as **auction.csv**.
+Forked from [MarketingPipeline/Python-Selenium-Action](https://github.com/MarketingPipeline/Python-Selenium-Action) and use to update dialy on TWSE auction site on https://www.twse.com.tw/zh/announcement/auction.html and download the CSV as **auction.csv**.
   
 ## Contributing ![GitHub](https://img.shields.io/github/contributors/MarketingPipeline/Python-Selenium-Action)
 
