@@ -41,8 +41,7 @@ jobs:
         with:
           csvinput: ${{ steps.csv.outputs.content }}  
       - name: Echo The Results
-        run: |
-          echo ${{steps.csv-table-output.outputs.markdown-table}}    
+        run: echo ${{steps.csv-table-output.outputs.markdown-table}}    
       - name: Commit and Push The Results From Python Selenium Action
         run: |
          git config --global user.name "github-actions[bot]"
