@@ -26,10 +26,16 @@ jobs:
 
       - name: Running the Python script
         run: python Selenium-Template.py | more auction.csv
-
       - name: More The Results
         run: |
           more auction.csv      
+      - name: Commit and Push The Results From Python Selenium Action
+        run: |
+         git config --global user.name "github-actions[bot]"
+         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+         git add -A
+         git commit -m "GitHub Actions Results added"
+         git push
       - name: Read CSV
         id: csv
         uses: juliangruber/read-file-action@v1
@@ -42,10 +48,3 @@ jobs:
           csvinput: ${{ steps.csv.outputs.content }}  
       - name: Echo The Results
         run: echo ${{steps.csv-table-output.outputs.markdown-table}}    
-      - name: Commit and Push The Results From Python Selenium Action
-        run: |
-         git config --global user.name "github-actions[bot]"
-         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-         git add -A
-         git commit -m "GitHub Actions Results added"
-         git push
