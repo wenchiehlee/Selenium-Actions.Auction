@@ -39,7 +39,8 @@ jobs:
         id: csv
         run: 
             output=`python ReadFile.py auction.csv Big5`
-            echo content=$output >> $GITHUB_OUTPUT
+            echo $output
+            echo "content=$output" >> $GITHUB_OUTPUT
       - name: Create MD
         uses: petems/csv-to-md-table-action@master
         id: csv-table-output
