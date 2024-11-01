@@ -36,16 +36,15 @@ jobs:
          git add -A
          git commit -m "GitHub Actions Results added"
          git push
-#      - name: Read CSV
-#        id: csv
-#        uses: guibranco/github-file-reader-action-v2@v2.2.705
-#        with:
-#          path: auction.csv
-#          encoding: 'big5'
-#      - name: Create MD
-#        uses: petems/csv-to-md-table-action@master
-#        id: csv-table-output
-#        with:
-#          csvinput: ${{ steps.csv.outputs.content }}  
+      - name: Read CSV
+        id: csv
+        run: |
+            output=`python ReadFile.py auction.csv Big5`
+            echo content=$output >> $GITHUB_OUTPUT
+      - name: Create MD
+        uses: petems/csv-to-md-table-action@master
+        id: csv-table-output
+        with:
+          csvinput: ${{ steps.csv.outputs.content }}  
 #      - name: Echo The Results
 #        run: echo "${{steps.csv-table-output.outputs.markdown-table}}"
