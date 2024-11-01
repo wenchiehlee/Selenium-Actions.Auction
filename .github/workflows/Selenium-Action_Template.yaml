@@ -38,7 +38,7 @@ jobs:
       - name: Read CSV
         id: csv
         run: |
-            output=$(python ReadFile.py auction.csv Big5) 
+            output=`python ReadFile.py auction.csv Big5` 
             echo $output
             echo "content=$output" >> $GITHUB_OUTPUT
       - name: Create MD
