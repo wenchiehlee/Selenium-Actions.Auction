@@ -38,9 +38,10 @@ jobs:
 #         git push
       - name: Read CSV
         id: csv
-        uses: juliangruber/read-file-action@v1
+        uses: satya-500/read-file-github-action@v1
         with:
           path: auction.csv
+          encoding: 'Big5'
       - name: Create MD
         uses: petems/csv-to-md-table-action@master
         id: csv-table-output
