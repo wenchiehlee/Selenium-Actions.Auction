@@ -30,7 +30,19 @@ jobs:
       - name: More The Results
         run: |
           more auction.csv      
-        
+      - name: Read CSV
+        id: csv
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: auction.csv
+      - name: Create MD
+        uses: petems/csv-to-md-table-action@master
+        id: csv-table-output
+        with:
+          csvinput: ${{ steps.csv.outputs.content }}  
+      - name: Echo The Results
+        run: |
+          echo ${{steps.csv-table-output.outputs.markdown-table}}    
       - name: Commit and Push The Results From Python Selenium Action
         run: |
          git config --global user.name "github-actions[bot]"
