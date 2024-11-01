@@ -25,7 +25,7 @@ jobs:
         run: sudo apt-get install xvfb
 
       - name: Running the Python script
-        run: python Selenium-Template.py | more auction.csv
+        run: python Selenium-Template.py | python ReadFile.py auction.csv Big5
       - name: More The Results
         run: |
           more auction.csv      
