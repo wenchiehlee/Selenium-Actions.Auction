@@ -38,7 +38,7 @@ jobs:
 #         git push
       - name: Read CSV
         id: csv
-        uses: satya-500/read-file-github-action@v1.0.0
+        uses: guibranco/github-file-reader-action-v2@v2.2.705
         with:
           path: auction.csv
           encoding: 'Big5'
