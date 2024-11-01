@@ -47,4 +47,4 @@ jobs:
         with:
           csvinput: ${{ steps.csv.outputs.content }}  
       - name: Echo The Results
-        run: echo ${{steps.csv-table-output.outputs.markdown-table}}    
+        run: echo "${{steps.csv-table-output.outputs.markdown-table}}"
