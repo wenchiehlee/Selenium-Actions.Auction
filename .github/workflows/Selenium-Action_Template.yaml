@@ -29,23 +29,23 @@ jobs:
       - name: More The Results
         run: |
           more auction.csv      
-#      - name: Commit and Push The Results From Python Selenium Action
-#        run: |
-#         git config --global user.name "github-actions[bot]"
-#         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-#         git add -A
-#         git commit -m "GitHub Actions Results added"
-#         git push
-      - name: Read CSV
-        id: csv
-        uses: guibranco/github-file-reader-action-v2@v2.2.705
-        with:
-          path: auction.csv
-          encoding: 'big5'
-      - name: Create MD
-        uses: petems/csv-to-md-table-action@master
-        id: csv-table-output
-        with:
-          csvinput: ${{ steps.csv.outputs.content }}  
-      - name: Echo The Results
-        run: echo "${{steps.csv-table-output.outputs.markdown-table}}"
+      - name: Commit and Push The Results From Python Selenium Action
+        run: |
+         git config --global user.name "github-actions[bot]"
+         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+         git add -A
+         git commit -m "GitHub Actions Results added"
+         git push
+#      - name: Read CSV
+#        id: csv
+#        uses: guibranco/github-file-reader-action-v2@v2.2.705
+#        with:
+#          path: auction.csv
+#          encoding: 'big5'
+#      - name: Create MD
+#        uses: petems/csv-to-md-table-action@master
+#        id: csv-table-output
+#        with:
+#          csvinput: ${{ steps.csv.outputs.content }}  
+#      - name: Echo The Results
+#        run: echo "${{steps.csv-table-output.outputs.markdown-table}}"
