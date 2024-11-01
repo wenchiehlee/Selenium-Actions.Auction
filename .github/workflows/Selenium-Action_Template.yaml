@@ -41,7 +41,7 @@ jobs:
         uses: guibranco/github-file-reader-action-v2@v2.2.705
         with:
           path: auction.csv
-          encoding: 'Big5'
+          encoding: 'big5'
       - name: Create MD
         uses: petems/csv-to-md-table-action@master
         id: csv-table-output
