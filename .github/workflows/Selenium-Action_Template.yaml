@@ -28,6 +28,8 @@ jobs:
         run: python Selenium-Template.py
       - name: More The Results
         run: python ReadFile.py auction.csv Big5 > action.csv    
+      - name: More The Results
+        run: more action.csv
       #- name: Commit and Push The Results From Python Selenium Action
       #  run: |
       #   git config --global user.name "github-actions[bot]"
