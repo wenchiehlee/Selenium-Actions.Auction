@@ -27,13 +27,13 @@ jobs:
       - name: Running the Python script
         run: python Selenium-Template.py
       - name: More The Results
-        run: python ReadFile.py auction.csv Big5 > auction.csv    
+        run: python ReadFile.py auction.csv Big5 > auction-utf8.csv    
 
       - name: Read CSV
         id: csv
         run: |
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          csvfile=$(more auction.csv)
+          csvfile=$(more auction-utf8.csv)
           echo "content<<$EOF" >> $GITHUB_OUTPUT
           echo "$csvfile"      >> $GITHUB_OUTPUT
           echo "$EOF"          >> $GITHUB_OUTPUT
