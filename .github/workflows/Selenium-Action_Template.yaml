@@ -1,5 +1,8 @@
 name: Run Selenium On GitHub Action
 on:
+  push:
+    branches:
+      - master
   schedule:
     - cron: "0 7 * * *"     # Runs every day at 7:00 AM UTC
   workflow_dispatch:
@@ -28,7 +31,12 @@ jobs:
         run: python Selenium-Template.py
         
       - name: Big5 to UTF8
-        run: python ReadFile.py auction.csv Big5 > auction-utf8.csv    
+        run: 
+          python ReadFile.py auction.csv Big5 > auction-utf8.csv
+          python ReadFile.py 2020.csv Big5 > 2020-utf8.csv  
+          python ReadFile.py 2021.csv Big5 > 2021-utf8.csv  
+          python ReadFile.py 2022.csv Big5 > 2022-utf8.csv  
+          python ReadFile.py 2023.csv Big5 > 2023-utf8.csv  
 
       - name: Read CSV and remove no need lines
         id: csv
