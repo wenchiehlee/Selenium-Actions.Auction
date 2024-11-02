@@ -27,7 +27,7 @@ jobs:
       - name: Running the Python script
         run: python Selenium-Template.py
       - name: More The Results
-        run: python ReadFile.py auction.csv Big5     
+        run: python ReadFile.py auction.csv Big5 > action.csv    
       #- name: Commit and Push The Results From Python Selenium Action
       #  run: |
       #   git config --global user.name "github-actions[bot]"
@@ -37,15 +37,13 @@ jobs:
       #   git push
       - name: Read CSV
         id: csv
-        run: |
-            output=`python ReadFile.py auction.csv Big5` 
-            echo $output
-            echo "content=$output<<EOF" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: auction.csv
       - name: Create MD
         uses: petems/csv-to-md-table-action@master
         id: csv-table-output
         with:
           csvinput: ${{ steps.csv.outputs.content }}  
-#      - name: Echo The Results
-#        run: echo "${{steps.csv-table-output.outputs.markdown-table}}"
+      - name: Echo The Results
+        run: echo "${{steps.csv-table-output.outputs.markdown-table}}"
