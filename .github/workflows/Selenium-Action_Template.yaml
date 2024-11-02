@@ -39,11 +39,14 @@ jobs:
       - name: Read CSV
         id: csv
         run: |
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           csvfile=$(more action.csv)
-          echo "content=$csvfile" >> $GITHUB_OUTPUT
+          echo "content<<$EOF" >> $GITHUB_OUTPUT
+          echo "$csvfile"      >> $GITHUB_OUTPUT
+          echo "$EOF"          >> $GITHUB_OUTPUT
       #- name: Read CSV
       #  id: csv
-      #  uses: andstor/file-reader-action@v1.0.0
+      #  uses: andstor/file-reader-action@v1.<<$EOF0.0
       #  with:
       #    path: auction.csv
       #    encoding: utf8
