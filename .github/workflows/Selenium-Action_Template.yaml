@@ -26,14 +26,15 @@ jobs:
 
       - name: Running the Python script
         run: python Selenium-Template.py
-      - name: More The Results
+        
+      - name: Big5 to UTF8
         run: python ReadFile.py auction.csv Big5 > auction-utf8.csv    
 
-      - name: Read CSV
+      - name: Read CSV and remove 1st line and last line
         id: csv
         run: |
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          csvfile=$(tail -n +2 auction-utf8.csv)    # remove the first line of the auction-utf8.csv
+          csvfile=$(tail -n +2 auction-utf8.csv|head -n -1)    # remove the first/last line of the auction-utf8.csv
           echo "content<<$EOF" >> $GITHUB_OUTPUT
           echo "$csvfile"      >> $GITHUB_OUTPUT
           echo "$EOF"          >> $GITHUB_OUTPUT
