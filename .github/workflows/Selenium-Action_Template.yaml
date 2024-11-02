@@ -31,7 +31,7 @@ jobs:
         run: python Selenium-Template.py
         
       - name: Big5 to UTF8
-        run: 
+        run: |
           python ReadFile.py auction.csv Big5 > auction-utf8.csv
           python ReadFile.py 2020.csv Big5 > 2020-utf8.csv  
           python ReadFile.py 2021.csv Big5 > 2021-utf8.csv  
