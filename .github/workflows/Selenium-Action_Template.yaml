@@ -30,11 +30,11 @@ jobs:
       - name: Big5 to UTF8
         run: python ReadFile.py auction.csv Big5 > auction-utf8.csv    
 
-      - name: Read CSV and remove 1st line and last 3 line
+      - name: Read CSV and remove no need lines
         id: csv
         run: |
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          csvfile=$(tail -n +2 auction-utf8.csv|head -n -3)    # remove the first/last line of the auction-utf8.csv
+          csvfile=$(tail -n +2 auction-utf8.csv|head -n -5)    # remove the first 1/last 5 line of the auction-utf8.csv
           echo "content<<$EOF" >> $GITHUB_OUTPUT
           echo "$csvfile"      >> $GITHUB_OUTPUT
           echo "$EOF"          >> $GITHUB_OUTPUT
