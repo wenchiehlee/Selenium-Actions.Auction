@@ -46,7 +46,6 @@ jobs:
           echo "content<<$EOF" >> $GITHUB_OUTPUT
           echo "$csvfile"      >> $GITHUB_OUTPUT
           echo "$EOF"          >> $GITHUB_OUTPUT
-
       #- name: Create MD
       #  uses: petems/csv-to-md-table-action@master
       #  id: csv-table-output
@@ -58,7 +57,7 @@ jobs:
       - name: Create MD
         id: csv-table-output
         run: |
-          echo ${{ steps.csv.outputs.content }} | python csv-to-md.py auction-utf8.csv utf8 > csv.md
+          python csv-to-md.py auction-utf8.csv utf8 > csv.md
       - name: Commit and Push The Results From Python Selenium Action
         run: |
          git config --global user.name "github-actions[bot]"
