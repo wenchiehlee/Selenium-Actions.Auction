@@ -32,17 +32,24 @@ jobs:
         
       - name: Big5 to UTF8
         run: |
-          python ReadFile.py auction.csv Big5 | tail -n +2 |head -n -5 > auction-utf8.csv
+          python ReadFile.py auction.csv Big5 | tail -n +2 |head -n -5 > auction-utf8.csv # remove the first 1/last 5 line of the auction-utf8.csv
           python ReadFile.py 2020.csv Big5    | tail -n +2 |head -n -5 > 2020-utf8.csv  
           python ReadFile.py 2021.csv Big5    | tail -n +2 |head -n -5 > 2021-utf8.csv  
           python ReadFile.py 2022.csv Big5    | tail -n +2 |head -n -5 > 2022-utf8.csv  
           python ReadFile.py 2023.csv Big5    | tail -n +2 |head -n -5 > 2023-utf8.csv  
 
+      - name: CSV filter
+        run: |
+          cat auction-utf8.csv | python csv-filter.py > auction-utf8-filter.csv
+          cat 2023-utf8.csv | python csv-filter.py > 2023-utf8-filter.csv
+          cat 2022-utf8.csv | python csv-filter.py > 2022-utf8-filter.csv
+          cat 2021-utf8.csv | python csv-filter.py > 2021-utf8-filter.csv
+          cat 2020-utf8.csv | python csv-filter.py > 2020-utf8-filter.csv
       - name: Read CSV and remove no need lines
         id: csv
         run: |
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          csvfile=$(cat auction-utf8.csv)    # remove the first 1/last 5 line of the auction-utf8.csv
+          csvfile=$(cat auction-utf8.csv)    
           echo "content<<$EOF" >> $GITHUB_OUTPUT
           echo "$csvfile"      >> $GITHUB_OUTPUT
           echo "$EOF"          >> $GITHUB_OUTPUT
@@ -58,6 +65,18 @@ jobs:
         id: csv-table-output
         run: |
           python csv-to-md.py auction-utf8.csv utf8 > csv.md
+      #- name: Push generated MD pages to another repository
+      #  uses: nkoppel/push-files-to-another-repository@v1.1.3
+      #  env:
+      #    API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      #  with:
+      #    source-files: 'csv.md'
+      #    destination-username: 'wenchiehlee'
+      #    destination-repository: 'mkdocs'
+      #    destination-directory: 'projects/my-project'
+      #    commit-username: "github-actions[bot]"
+      #    commit-email: "41898282+github-actions[bot]@users.noreply.github.com"
+      #    #commit-message:
       - name: Commit and Push The Results From Python Selenium Action
         run: |
          git config --global user.name "github-actions[bot]"

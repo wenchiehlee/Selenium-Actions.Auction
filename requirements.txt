@@ -1,5 +1,6 @@
 chromedriver-autoinstaller 
 selenium 
 pyvirtualdisplay
+csvfilter
 csv2md
 win-unicode-console
