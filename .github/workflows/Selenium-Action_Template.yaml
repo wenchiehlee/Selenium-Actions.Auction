@@ -23,7 +23,7 @@ jobs:
         
        # Need to fetch reqs if needed
       - name: Installing all necessary packages
-        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
+        run: pip install -r requirements.txt
       - name: Install xvfb
         run: sudo apt-get install xvfb
 
@@ -47,15 +47,18 @@ jobs:
           echo "$csvfile"      >> $GITHUB_OUTPUT
           echo "$EOF"          >> $GITHUB_OUTPUT
 
+      #- name: Create MD
+      #  uses: petems/csv-to-md-table-action@master
+      #  id: csv-table-output
+      #  with:
+      #    csvinput: ${{ steps.csv.outputs.content }}  
+      #
+      #- name: Echo Markdown Table
+      #  run: echo "${{steps.csv-table-output.outputs.markdown-table}}" > csv.md
       - name: Create MD
-        uses: petems/csv-to-md-table-action@master
         id: csv-table-output
-        with:
-          csvinput: ${{ steps.csv.outputs.content }}  
-
-      - name: Echo Markdown Table
-        run: echo "${{steps.csv-table-output.outputs.markdown-table}}" > csv.md
-
+        run: |
+          echo ${{ steps.csv.outputs.content }} | python csv-to-md.py auction-utf8.csv utf8 > csv.md
       - name: Commit and Push The Results From Python Selenium Action
         run: |
          git config --global user.name "github-actions[bot]"
