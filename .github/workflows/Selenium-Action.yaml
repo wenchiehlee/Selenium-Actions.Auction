@@ -28,7 +28,7 @@ jobs:
         run: sudo apt-get install xvfb
 
       - name: Running the Python script
-        run: python Selenium-Template.py
+        run: python Selenium.py
         
       - name: Big5 to UTF8
         run: |
