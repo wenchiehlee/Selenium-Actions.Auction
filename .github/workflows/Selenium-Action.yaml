@@ -87,7 +87,7 @@ jobs:
           files: |
             *.csv
       - name: List all changed files csv files if csv changed
-#        if: steps.changed-csv-files.outputs.any_changed == 'true'
+        if: steps.changed-csv-files.outputs.any_changed == 'true'
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-csv-files.outputs.all_changed_files }}
         run: |
@@ -98,7 +98,7 @@ jobs:
             fi
           done
       - name: Repository Dispatch
-#        if: steps.changed-csv-files.outputs.any_changed == 'true'     
+        if: steps.changed-csv-files.outputs.any_changed == 'true'     
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT }}
