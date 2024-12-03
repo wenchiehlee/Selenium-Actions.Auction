@@ -102,7 +102,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT }}
-          repository: wenchiehlee/Selenium-Action.TPEX-company
+          repository: wenchiehlee/wenchiehlee/twstock
           event-type: 2020-Now-utf8-filter.csv
       #- name: Push generated MD pages to another repository
       #  uses: nkoppel/push-files-to-another-repository@v1.1.3
