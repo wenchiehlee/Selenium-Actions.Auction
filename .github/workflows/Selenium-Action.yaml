@@ -85,7 +85,7 @@ jobs:
         with:
           # Avoid using single or double quotes for multiline patterns
           files: |
-            *.csv
+            **.csv
       - name: List all changed files csv files if csv changed
         if: steps.changed-csv-files.outputs.any_changed == 'true'
         env:
