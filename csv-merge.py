@@ -8,7 +8,9 @@ file_paths = [
     "2023-utf8-filter.csv",
     "2022-utf8-filter.csv",
     "2021-utf8-filter.csv",
-    "2020-utf8-filter.csv"
+    "2020-utf8-filter.csv",
+    "2019-utf8-filter.csv",
+    "2018-utf8-filter.csv"
 ]
 
 # Load and combine all CSV files

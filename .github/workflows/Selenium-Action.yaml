@@ -44,6 +44,8 @@ jobs:
           cat 2022-utf8.csv | python csv-filter.py > 2022-utf8-filter.csv
           cat 2021-utf8.csv | python csv-filter.py > 2021-utf8-filter.csv
           cat 2020-utf8.csv | python csv-filter.py > 2020-utf8-filter.csv
+          cat 2019-utf8.csv | python csv-filter.py > 2019-utf8-filter.csv
+          cat 2018-utf8.csv | python csv-filter.py > 2018-utf8-filter.csv
       - name: Read CSV and remove no need lines
         id: csv
         run: |
@@ -52,7 +54,7 @@ jobs:
           echo "content<<$EOF" >> $GITHUB_OUTPUT
           echo "$csvfile"      >> $GITHUB_OUTPUT
           echo "$EOF"          >> $GITHUB_OUTPUT
-      - name: Merge 2020 to now utf8-filter csv
+      - name: Merge 2018 to now utf8-filter csv
         id: merge-csv
         run: |
           python csv-merge.py
@@ -77,6 +79,10 @@ jobs:
           python csv-to-md.py 2021-utf8-filter.csv utf8 > 2021-utf8-filter.md
           python csv-to-md.py 2020-utf8.csv utf8 > 2020-utf8.md
           python csv-to-md.py 2020-utf8-filter.csv utf8 > 2020-utf8-filter.md
+          python csv-to-md.py 2019-utf8.csv utf8 > 2019-utf8.md
+          python csv-to-md.py 2019-utf8-filter.csv utf8 > 2019-utf8-filter.md
+          python csv-to-md.py 2018-utf8.csv utf8 > 2018-utf8.md
+          python csv-to-md.py 2018-utf8-filter.csv utf8 > 2018-utf8-filter.md
           python csv-to-md.py 2020-Now-utf8-filter.csv utf8 > 2020-Now-utf8-filter.md
 
       - name: Get all changed on *.csv
