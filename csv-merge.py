@@ -5,6 +5,7 @@ import pandas as pd
 # List of file paths
 file_paths = [
     "auction-utf8-filter.csv",
+    "2024-utf8-filter.csv",
     "2023-utf8-filter.csv",
     "2022-utf8-filter.csv",
     "2021-utf8-filter.csv",
