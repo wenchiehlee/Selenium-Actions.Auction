@@ -59,7 +59,8 @@ jobs:
       - name: Merge 2018 to now utf8-filter csv
         id: merge-csv
         run: |
-          python csv-merge.py
+          # python csv-merge.py
+          csvstack auction-utf8-filter.csv 2024-utf8-filter.csv 2023-utf8-filter.csv 2022-utf8-filter.csv 2021-utf8-filter.csv 2020-utf8-filter.csv 2019-utf8-filter.csv 2018-utf8-filter.csv > 2020-Now-utf8-filter.csv
       #- name: Create MD
       #  uses: petems/csv-to-md-table-action@master
       #  id: csv-table-output
