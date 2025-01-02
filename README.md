@@ -8,19 +8,18 @@ Update dialy on TWSE auction site on https://www.twse.com.tw/zh/announcement/auc
 ## Credit
 Forked from [MarketingPipeline/Python-Selenium-Action](https://github.com/MarketingPipeline/Python-Selenium-Action).
   
-## Contributing ![GitHub](https://img.shields.io/github/contributors/MarketingPipeline/Python-Selenium-Action)
+## Contributing ![GitHub](https://img.shields.io/github/contributors/wenchiehlee/Selenium-Actions.Auction)
 Want to improve this? Create a pull request with detailed changes / improvements! If approved you will be added to the list of contributors of this awesome project!
-
 
 
 See also the list of
 [contributors](https://github.com/MarketingPipeline/Python-Selenium-Action/graphs/contributors) who
 participate in this project.
 
-## License ![GitHub](https://img.shields.io/github/license/MarketingPipeline/Python-Selenium-Action)
+## License ![GitHub](https://img.shields.io/github/license/wenchiehlee/Selenium-Actions.Auction)
 
 This project is licensed under the MIT License - see the
-[LICENSE.md](https://github.com/MarketingPipeline/Python-Selenium-Action/blob/main/LICENSE) file for
+[LICENSE.md](https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/refs/heads/main/LICENSE.md) file for
 details.
 
 
