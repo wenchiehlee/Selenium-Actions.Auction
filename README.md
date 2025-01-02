@@ -13,7 +13,7 @@ Want to improve this? Create a pull request with detailed changes / improvements
 
 
 See also the list of
-[contributors](https://github.com/MarketingPipeline/Python-Selenium-Action/graphs/contributors) who
+[contributors](https://github.com/wenchiehlee/Selenium-Actions.Auction/graphs/contributors) who
 participate in this project.
 
 ## License ![GitHub](https://img.shields.io/github/license/wenchiehlee/Selenium-Actions.Auction)
