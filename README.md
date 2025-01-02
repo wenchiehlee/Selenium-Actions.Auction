@@ -3,7 +3,7 @@
 ## Goals
 Update dialy on TWSE auction site on https://www.twse.com.tw/zh/announcement/auction.html and download the CSV as **auction.csv** and **auction-utf8.csv**.
 
-![IPO](http://www.plantuml.com/plantuml/proxy?cache=no&fmt=svg&src=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/docs/IPO.planuml)
+![IPO](http://www.plantuml.com/plantuml/proxy?cache=no&fmt=svg&src=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/IPO.plantuml)
 
 ## Credit
 Forked from [MarketingPipeline/Python-Selenium-Action](https://github.com/MarketingPipeline/Python-Selenium-Action).
