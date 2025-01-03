@@ -12,6 +12,8 @@ processor = Processor(fields=list(range(26)))  # Fields 0 to 25
 processor.add_validator(filter_rows)
 
 # Modify the output stream to avoid additional newlines
+sys.stdin.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding='utf-8')
 sys.stdout.reconfigure(newline='')
 
 # Set up CSV writer for standard output, with all items quoted
