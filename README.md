@@ -1,5 +1,7 @@
 # Selenium-Actiona.Auction
 
+[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/TWSE_TPEX.json)](2020-Now-utf8-filter.csv)
+
 ## Goals
 Update dialy on TWSE auction site on https://www.twse.com.tw/zh/announcement/auction.html and download the CSV as **auction.csv** and **auction-utf8.csv**.
 
