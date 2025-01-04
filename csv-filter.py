@@ -5,7 +5,8 @@ from csvfilter import Processor
 import csv
 
 def filter_rows(row):
-    return "初上櫃" in row or "初上市" in row or "創新板初上市" in row or "第一上市初上市" in row or "創新板轉列上市" in row
+    # disable "第一上市初上市" in row
+    return "初上櫃" in row or "初上市" in row or "創新板初上市" in row or "創新板轉列上市" in row
 
 # Set up processor with fields to match the expected number of columns in the CSV
 processor = Processor(fields=list(range(26)))  # Fields 0 to 25
