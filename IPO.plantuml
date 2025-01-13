@@ -6,7 +6,7 @@ skinparam LegendBorderThickness 1
 skinparam backgroundColor transparent
 
 #highlight  "投標結束日前, IPO"
-#highlight  "投標結束日前, IPO" / "申請日期"
+
 #highlight  "投標結束日前, IPO" / "股票代號"
 #highlight  "投標結束日前, IPO" / "公司名稱"
 
