@@ -5,15 +5,15 @@ skinparam actorStyle awesome
 skinparam LegendBorderThickness 1
 skinparam backgroundColor transparent
 
-#highlight  "投標結束日前, IPO"
+#highlight  "投標結束日前, Selenium-Actions.IPO"
 
-#highlight  "投標結束日前, IPO" / "股票代號"
-#highlight  "投標結束日前, IPO" / "公司名稱"
+#highlight  "投標結束日前, Selenium-Actions.IPO" / "股票代號"
+#highlight  "投標結束日前, Selenium-Actions.IPO" / "公司名稱"
 
-#highlight  "投標結束日前, PER"
+#highlight  "投標結束日前, Python-Actions.PER"
 
-#highlight  "投標結束日前, PER" / "股票代號"
-#highlight  "投標結束日前, PER" / "公司名稱"
+#highlight  "投標結束日前, Python-Actions.PER" / "股票代號"
+#highlight  "投標結束日前, Python-Actions.PER" / "公司名稱"
 
 #highlight  "投標結束日前, 競拍時程"
 
@@ -37,7 +37,7 @@ skinparam backgroundColor transparent
 
 
 {
-  "投標結束日前, IPO":     {
+  "投標結束日前, Selenium-Actions.IPO":     {
   "申請日期": "2024/04/29",
   "股票代號": "8272",
   "公司名稱": "全景軟體",
@@ -52,7 +52,7 @@ skinparam backgroundColor transparent
   "備註": ""
     },
 
-  "投標結束日前, PER":     {
+  "投標結束日前, Python-Actions.PER":     {
         "股票代號": "8272",
         "公司名稱": "全景軟體",
         "收盤價": null,
