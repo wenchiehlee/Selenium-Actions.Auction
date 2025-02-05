@@ -1,9 +1,9 @@
 # Selenium-Actions.Auction
 [![Run Selenium On GitHub Action](https://github.com/wenchiehlee/Selenium-Actions.Auction/actions/workflows/Selenium-Action.yaml/badge.svg)](https://github.com/wenchiehlee/Selenium-Actions.Auction/actions/workflows/Selenium-Action.yaml)
 
-[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/TWSE_TPEX.json)](2020-Now-utf8-filter.csv)
-[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/tobe-auctioned.json)](tobe-auctioned.csv)
-[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned.json)](auctioned.csv)
+[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/TWSE_TPEX.json)](2020-Now-utf8-filter.csv)<br>
+[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/tobe-auctioned.json)](tobe-auctioned.csv)<br>
+[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned.json)](auctioned.csv)<br>
 [![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/cancel.json)](cancel.csv)
 
 ## Goals
