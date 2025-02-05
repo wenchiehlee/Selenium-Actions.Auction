@@ -76,9 +76,15 @@ jobs:
         run: |
           # python csv-merge.py
           csvstack auction-utf8-filter.csv 2024-utf8-filter.csv 2023-utf8-filter.csv 2022-utf8-filter.csv 2021-utf8-filter.csv 2020-utf8-filter.csv 2019-utf8-filter.csv 2018-utf8-filter.csv 2017-utf8-filter.csv> 2020-Now-utf8-filter.csv
+          csvgrep -c "取消競價拍賣(流標或取消)" -m "Y" 2020-Now-utf8-filter.csv > cancel.csv
+          csvgrep -c "取消競價拍賣(流標或取消)" -i -m "Y" 2020-Now-utf8-filter.csv | csvgrep -c "得標總金額(元)" -i -r '^(0|0\.0|0\.00)$' > auctioned.csv
+          csvgrep -c "取消競價拍賣(流標或取消)" -i -m "Y" 2020-Now-utf8-filter.csv | csvgrep -c "得標總金額(元)" -r '^(0|0\.0|0\.00)$' > tobe-auctioned.csv
       - name: Lines count
         run: |
-            python CountCSVLine.py TWSE_TPEX.json 2020-Now-utf8-filter.csv "TWSE+TPEX Auction Company"
+            python CountCSVLine.py TWSE_TPEX.json 2020-Now-utf8-filter.csv "TWSE+TPEX 競標公司"
+            python CountCSVLine.py cancel.json cancel.csv "TWSE+TPEX 競標公司-取消"
+            python CountCSVLine.py auctioned.json auctioned.csv "TWSE+TPEX 競標公司-完成"
+            python CountCSVLine.py tobe-auctioned.json tobe-auctioned.csv "TWSE+TPEX 競標公司-未完成"
       #- name: Create MD
       #  uses: petems/csv-to-md-table-action@master
       #  id: csv-table-output
