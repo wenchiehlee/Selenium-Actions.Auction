@@ -33,11 +33,25 @@ jobs:
       - name: Big5 to UTF8
         run: |
           python ReadFile.py auction.csv Big5 | tail -n +2 |head -n -5 > auction-utf8.csv # remove the first 1/last 5 line of the auction-utf8.csv
-          python ReadFile.py 2020.csv Big5    | tail -n +2 |head -n -5 > 2020-utf8.csv
-          python ReadFile.py 2023.csv Big5    | tail -n +2 |head -n -5 > 2023-utf8.csv
+
           python ReadFile.py 2024.csv Big5    | tail -n +2 |head -n -5 > 2024-utf8.csv
-      #   python ReadFile.py 2021.csv Big5    | tail -n +2 |head -n -5 > 2021-utf8.csv
-      #   python ReadFile.py 2022.csv Big5    | tail -n +2 |head -n -5 > 2022-utf8.csv
+          python ReadFile.py 2023.csv Big5    | tail -n +2 |head -n -5 > 2023-utf8.csv
+          #   python ReadFile.py 2022.csv Big5    | tail -n +2 |head -n -5 > 2022-utf8.csv
+          #   python ReadFile.py 2021.csv Big5    | tail -n +2 |head -n -5 > 2021-utf8.csv
+          python ReadFile.py 2020.csv Big5    | tail -n +2 |head -n -5 > 2020-utf8.csv
+          python ReadFile.py 2019.csv Big5    | tail -n +2 |head -n -5 > 2019-utf8.csv
+          python ReadFile.py 2018.csv Big5    | tail -n +2 |head -n -5 > 2018-utf8.csv
+          python ReadFile.py 2017.csv Big5    | tail -n +2 |head -n -5 > 2017-utf8.csv
+
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' auction-utf8.csv
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2024-utf8.csv
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2023-utf8.csv
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2022-utf8.csv
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2021-utf8.csv
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2020-utf8.csv
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2019-utf8.csv
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2018-utf8.csv
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2017-utf8.csv
       - name: CSV filter
         run: |
           cat auction-utf8.csv | python csv-filter.py > auction-utf8-filter.csv
@@ -48,6 +62,7 @@ jobs:
           cat 2020-utf8.csv | python csv-filter.py > 2020-utf8-filter.csv
           cat 2019-utf8.csv | python csv-filter.py > 2019-utf8-filter.csv
           cat 2018-utf8.csv | python csv-filter.py > 2018-utf8-filter.csv
+          cat 2017-utf8.csv | python csv-filter.py > 2017-utf8-filter.csv
       - name: Read CSV and remove no need lines
         id: csv
         run: |
@@ -91,6 +106,8 @@ jobs:
           python csv-to-md.py 2019-utf8-filter.csv utf8 > 2019-utf8-filter.md
           python csv-to-md.py 2018-utf8.csv utf8 > 2018-utf8.md
           python csv-to-md.py 2018-utf8-filter.csv utf8 > 2018-utf8-filter.md
+          python csv-to-md.py 2017-utf8.csv utf8 > 2017-utf8.md
+          python csv-to-md.py 2017-utf8-filter.csv utf8 > 2017-utf8-filter.md
           python csv-to-md.py 2020-Now-utf8-filter.csv utf8 > 2020-Now-utf8-filter.md
 
       - name: Get all changed on *.csv
