@@ -36,8 +36,8 @@ jobs:
 
           python ReadFile.py 2024.csv Big5    | tail -n +2 |head -n -6 >> total.csv
           python ReadFile.py 2023.csv Big5    | tail -n +2 |head -n -6 >> total.csv
-          #   python ReadFile.py 2022.csv Big5    | tail -n +2 |head -n -6 >> total.csv
-          #   python ReadFile.py 2021.csv Big5    | tail -n +2 |head -n -6 >> total.csv
+          python ReadFile.py 2022.csv Big5    | tail -n +2 |head -n -6 >> total.csv
+          python ReadFile.py 2021.csv Big5    | tail -n +2 |head -n -6 >> total.csv
           python ReadFile.py 2020.csv Big5    | tail -n +2 |head -n -6 >> total.csv
           python ReadFile.py 2019.csv Big5    | tail -n +2 |head -n -6 >> total.csv
           python ReadFile.py 2018.csv Big5    | tail -n +2 |head -n -6 >> total.csv
