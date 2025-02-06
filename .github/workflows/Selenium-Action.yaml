@@ -64,7 +64,7 @@ jobs:
         id: csv
         run: |
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          csvfile=$(cat total-filter.csv)    
+          csvfile=$(cat total.csv)    
           echo "content<<$EOF" >> $GITHUB_OUTPUT
           echo "$csvfile"      >> $GITHUB_OUTPUT
           echo "$EOF"          >> $GITHUB_OUTPUT
