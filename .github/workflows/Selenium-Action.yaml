@@ -32,59 +32,51 @@ jobs:
         run: python Selenium.py
       - name: Big5 to UTF8
         run: |
-          python ReadFile.py auction.csv Big5 | tail -n +2 |head -n -5 > auction-utf8.csv # remove the first 1/last 5 line of the auction-utf8.csv
+          python ReadFile.py auction.csv Big5 | tail -n +2 |head -n -5 > total.csv # remove the first 1/last 5 line of the auction-utf8.csv
 
-          python ReadFile.py 2024.csv Big5    | tail -n +2 |head -n -5 > 2024-utf8.csv
-          python ReadFile.py 2023.csv Big5    | tail -n +2 |head -n -5 > 2023-utf8.csv
-          #   python ReadFile.py 2022.csv Big5    | tail -n +2 |head -n -5 > 2022-utf8.csv
-          #   python ReadFile.py 2021.csv Big5    | tail -n +2 |head -n -5 > 2021-utf8.csv
-          python ReadFile.py 2020.csv Big5    | tail -n +2 |head -n -5 > 2020-utf8.csv
-          python ReadFile.py 2019.csv Big5    | tail -n +2 |head -n -5 > 2019-utf8.csv
-          python ReadFile.py 2018.csv Big5    | tail -n +2 |head -n -5 > 2018-utf8.csv
-          python ReadFile.py 2017.csv Big5    | tail -n +2 |head -n -5 > 2017-utf8.csv
+          python ReadFile.py 2024.csv Big5    | tail -n +2 |head -n -6 >> total.csv
+          python ReadFile.py 2023.csv Big5    | tail -n +2 |head -n -6 >> total.csv
+          #   python ReadFile.py 2022.csv Big5    | tail -n +2 |head -n -6 >> total.csv
+          #   python ReadFile.py 2021.csv Big5    | tail -n +2 |head -n -6 >> total.csv
+          python ReadFile.py 2020.csv Big5    | tail -n +2 |head -n -6 >> total.csv
+          python ReadFile.py 2019.csv Big5    | tail -n +2 |head -n -6 >> total.csv
+          python ReadFile.py 2018.csv Big5    | tail -n +2 |head -n -6 >> total.csv
+          python ReadFile.py 2017.csv Big5    | tail -n +2 |head -n -6 >> total.csv
 
-          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' auction-utf8.csv
-          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2024-utf8.csv
-          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2023-utf8.csv
-          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2022-utf8.csv
-          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2021-utf8.csv
-          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2020-utf8.csv
-          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2019-utf8.csv
-          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2018-utf8.csv
-          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' 2017-utf8.csv
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' total.csv
       - name: CSV filter
         run: |
-          cat auction-utf8.csv | python csv-filter.py > auction-utf8-filter.csv
-          cat 2024-utf8.csv | python csv-filter.py > 2024-utf8-filter.csv          
-          cat 2023-utf8.csv | python csv-filter.py > 2023-utf8-filter.csv
-          cat 2022-utf8.csv | python csv-filter.py > 2022-utf8-filter.csv
-          cat 2021-utf8.csv | python csv-filter.py > 2021-utf8-filter.csv
-          cat 2020-utf8.csv | python csv-filter.py > 2020-utf8-filter.csv
-          cat 2019-utf8.csv | python csv-filter.py > 2019-utf8-filter.csv
-          cat 2018-utf8.csv | python csv-filter.py > 2018-utf8-filter.csv
-          cat 2017-utf8.csv | python csv-filter.py > 2017-utf8-filter.csv
+          csvgrep -c "取消競價拍賣(流標或取消)"    -m "Y" total.csv > cancel.csv
+          csvgrep -c "取消競價拍賣(流標或取消)" -i -m "Y" total.csv > total-cancel.csv
+
+          csvgrep -c "發行性質" -i -r "^(初上市|初上櫃|創新板初上市|創新板轉列上市)$" total-cancel.csv > auction-company.csv
+
+          csvgrep -c "得標總金額(元)" -i -r '^(0|0\.0|0\.00)$' auction-company.csv > auctioned.csv
+          csvgrep -c "得標總金額(元)"    -r '^(0|0\.0|0\.00)$' auction-company.csv > tobe-auctioned.csv
+
+          csvgrep -c "發行性質" -i -r "^(初上市|初上櫃)$" auctioned.csv > auctioned-inno.csv
+          csvgrep -c "發行性質"    -r "^(初上市|初上櫃)$" auctioned.csv > auctioned-filter.csv
+          csvgrep -c "發行性質"    -r "^(初上市|初上櫃)$" tobe-auctioned.csv > tobe-auctioned-filter.csv
+          # python csv-merge.py
+          # csvstack auction-utf8-filter.csv 2024-utf8-filter.csv 2023-utf8-filter.csv 2022-utf8-filter.csv 2021-utf8-filter.csv 2020-utf8-filter.csv 2019-utf8-filter.csv 2018-utf8-filter.csv 2017-utf8-filter.csv> total-fiter.csv
+
       - name: Read CSV and remove no need lines
         id: csv
         run: |
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          csvfile=$(cat auction-utf8.csv)    
+          csvfile=$(cat total-filter.csv)    
           echo "content<<$EOF" >> $GITHUB_OUTPUT
           echo "$csvfile"      >> $GITHUB_OUTPUT
           echo "$EOF"          >> $GITHUB_OUTPUT
-      - name: Merge 2018 to now utf8-filter csv
-        id: merge-csv
-        run: |
-          # python csv-merge.py
-          csvstack auction-utf8-filter.csv 2024-utf8-filter.csv 2023-utf8-filter.csv 2022-utf8-filter.csv 2021-utf8-filter.csv 2020-utf8-filter.csv 2019-utf8-filter.csv 2018-utf8-filter.csv 2017-utf8-filter.csv> 2020-Now-utf8-filter.csv
-          csvgrep -c "取消競價拍賣(流標或取消)" -m "Y" 2020-Now-utf8-filter.csv > cancel.csv
-          csvgrep -c "取消競價拍賣(流標或取消)" -i -m "Y" 2020-Now-utf8-filter.csv | csvgrep -c "得標總金額(元)" -i -r '^(0|0\.0|0\.00)$' > auctioned.csv
-          csvgrep -c "取消競價拍賣(流標或取消)" -i -m "Y" 2020-Now-utf8-filter.csv | csvgrep -c "得標總金額(元)" -r '^(0|0\.0|0\.00)$' > tobe-auctioned.csv
       - name: Lines count
         run: |
-            python CountCSVLine.py TWSE_TPEX.json 2020-Now-utf8-filter.csv "TWSE+TPEX 競標公司"
-            python CountCSVLine.py cancel.json cancel.csv "TWSE+TPEX 競標公司-取消"
-            python CountCSVLine.py auctioned.json auctioned.csv "TWSE+TPEX 競標公司-完成"
-            python CountCSVLine.py tobe-auctioned.json tobe-auctioned.csv "TWSE+TPEX 競標公司-未完成"
+          python CountCSVLine.py total.json total.csv "TWSE+TPEX 競標"
+          python CountCSVLine.py cancel.json cancel.csv "TWSE+TPEX 競標-取消"
+          python CountCSVLine.py auction-company.json auction-company.csv "TWSE+TPEX 競標公司"
+          python CountCSVLine.py auctioned.json auctioned.csv "TWSE+TPEX 競標公司-完成"
+          python CountCSVLine.py auctioned-filter.json auctioned-filter.csv "TWSE+TPEX 競標公司(初上市櫃)-完成"
+          python CountCSVLine.py auctioned-inno.json auctioned-inno.csv "TWSE+TPEX 競標公司(創新上市櫃)-完成"
+          python CountCSVLine.py tobe-auctioned.json tobe-auctioned.csv "TWSE+TPEX 競標公司-未完成"
       #- name: Create MD
       #  uses: petems/csv-to-md-table-action@master
       #  id: csv-table-output
@@ -93,29 +85,28 @@ jobs:
       #
       #- name: Echo Markdown Table
       #  run: echo "${{steps.csv-table-output.outputs.markdown-table}}" > csv.md
-      - name: Create MD
-        id: csv-table-output
-        run: |
-          python csv-to-md.py auction-utf8.csv utf8 > auction-utf8.md
-          python csv-to-md.py auction-utf8-filter.csv utf8 > auction-utf8-filter.md
-          python csv-to-md.py 2024-utf8.csv utf8 > 2024-utf8.md
-          python csv-to-md.py 2024-utf8-filter.csv utf8 > 2024-utf8-filter.md
-          python csv-to-md.py 2023-utf8.csv utf8 > 2023-utf8.md
-          python csv-to-md.py 2023-utf8-filter.csv utf8 > 2023-utf8-filter.md
-          python csv-to-md.py 2022-utf8.csv utf8 > 2022-utf8.md
-          python csv-to-md.py 2022-utf8-filter.csv utf8 > 2022-utf8-filter.md
-          python csv-to-md.py 2021-utf8.csv utf8 > 2021-utf8.md
-          python csv-to-md.py 2021-utf8-filter.csv utf8 > 2021-utf8-filter.md
-          python csv-to-md.py 2020-utf8.csv utf8 > 2020-utf8.md
-          python csv-to-md.py 2020-utf8-filter.csv utf8 > 2020-utf8-filter.md
-          python csv-to-md.py 2019-utf8.csv utf8 > 2019-utf8.md
-          python csv-to-md.py 2019-utf8-filter.csv utf8 > 2019-utf8-filter.md
-          python csv-to-md.py 2018-utf8.csv utf8 > 2018-utf8.md
-          python csv-to-md.py 2018-utf8-filter.csv utf8 > 2018-utf8-filter.md
-          python csv-to-md.py 2017-utf8.csv utf8 > 2017-utf8.md
-          python csv-to-md.py 2017-utf8-filter.csv utf8 > 2017-utf8-filter.md
-          python csv-to-md.py 2020-Now-utf8-filter.csv utf8 > 2020-Now-utf8-filter.md
-
+      # - name: Create MD
+      #   id: csv-table-output
+      #   run: |
+      #     python csv-to-md.py auction-utf8.csv utf8 > auction-utf8.md
+      #     python csv-to-md.py auction-utf8-filter.csv utf8 > auction-utf8-filter.md
+      #     python csv-to-md.py 2024-utf8.csv utf8 > 2024-utf8.md
+      #     python csv-to-md.py 2024-utf8-filter.csv utf8 > 2024-utf8-filter.md
+      #     python csv-to-md.py 2023-utf8.csv utf8 > 2023-utf8.md
+      #     python csv-to-md.py 2023-utf8-filter.csv utf8 > 2023-utf8-filter.md
+      #     python csv-to-md.py 2022-utf8.csv utf8 > 2022-utf8.md
+      #     python csv-to-md.py 2022-utf8-filter.csv utf8 > 2022-utf8-filter.md
+      #     python csv-to-md.py 2021-utf8.csv utf8 > 2021-utf8.md
+      #     python csv-to-md.py 2021-utf8-filter.csv utf8 > 2021-utf8-filter.md
+      #     python csv-to-md.py 2020-utf8.csv utf8 > 2020-utf8.md
+      #     python csv-to-md.py 2020-utf8-filter.csv utf8 > 2020-utf8-filter.md
+      #     python csv-to-md.py 2019-utf8.csv utf8 > 2019-utf8.md
+      #     python csv-to-md.py 2019-utf8-filter.csv utf8 > 2019-utf8-filter.md
+      #     python csv-to-md.py 2018-utf8.csv utf8 > 2018-utf8.md
+      #     python csv-to-md.py 2018-utf8-filter.csv utf8 > 2018-utf8-filter.md
+      #     python csv-to-md.py 2017-utf8.csv utf8 > 2017-utf8.md
+      #     python csv-to-md.py 2017-utf8-filter.csv utf8 > 2017-utf8-filter.md
+      #     python csv-to-md.py 2020-Now-utf8-filter.csv utf8 > 2020-Now-utf8-filter.md
       - name: Get all changed on *.csv
         id: changed-csv-files
         uses: tj-actions/changed-files@v45
@@ -130,8 +121,8 @@ jobs:
         run: |
           for file in ${ALL_CHANGED_FILES}; do
             echo "$file was changed"
-            if [ "$file" = "2020-Now-utf8-filter.csv" ]; then
-              echo "2020-Now-utf8-filter.csv:change!!"
+            if [ "$file" = "total.csv" ]; then
+              echo "total.csv:change!!"
             fi
           done
       - name: Repository Dispatch
