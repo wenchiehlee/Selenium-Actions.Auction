@@ -52,7 +52,7 @@ jobs:
           csvgrep -c "發行性質" -r "^(初上市|初上櫃|創新板初上市|創新板轉列上市)$" total-cancel.csv > auction-company.csv
 
           csvgrep -c "發行性質" -i -r "^(初上市|初上櫃)$" auction-company.csv > auction-company-inno.csv
-          csvgrep -c "發行性質"    -r "^(初上市|初上櫃)$" auction-company.csv > aauction-company-filter.csv
+          csvgrep -c "發行性質"    -r "^(初上市|初上櫃)$" auction-company.csv > auction-company-filter.csv
 
           csvgrep -c "得標總金額(元)" -i -r '^(0|0\.0|0\.00)$' auction-company.csv > auctioned.csv
           csvgrep -c "得標總金額(元)"    -r '^(0|0\.0|0\.00)$' auction-company.csv > tobe-auctioned.csv
