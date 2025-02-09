@@ -51,6 +51,9 @@ jobs:
 
           csvgrep -c "發行性質" -r "^(初上市|初上櫃|創新板初上市|創新板轉列上市)$" total-cancel.csv > auction-company.csv
 
+          csvgrep -c "發行性質" -i -r "^(初上市|初上櫃)$" auction-company.csv > auction-company-inno.csv
+          csvgrep -c "發行性質"    -r "^(初上市|初上櫃)$" auction-company.csv > aauction-company-filter.csv
+
           csvgrep -c "得標總金額(元)" -i -r '^(0|0\.0|0\.00)$' auction-company.csv > auctioned.csv
           csvgrep -c "得標總金額(元)"    -r '^(0|0\.0|0\.00)$' auction-company.csv > tobe-auctioned.csv
 
@@ -76,6 +79,8 @@ jobs:
           python CountCSVLine.py total.json total.csv "TWSE+TPEX 競標"
           python CountCSVLine.py cancel.json cancel.csv "TWSE+TPEX 競標-取消"
           python CountCSVLine.py auction-company.json auction-company.csv "TWSE+TPEX 競標公司"
+          python CountCSVLine.py auction-company-filter.json auction-company-filter.csv "TWSE+TPEX 競標公司(初上市櫃)"
+          python CountCSVLine.py auction-company-inno.json auction-company-inno.csv "TWSE+TPEX 競標公司(創新上市櫃)"
           python CountCSVLine.py auctioned.json auctioned.csv "TWSE+TPEX 競標公司-完成"
           python CountCSVLine.py auctioned-filter.json auctioned-filter.csv "TWSE+TPEX 競標公司(初上市櫃)-完成"
           python CountCSVLine.py auctioned-inno.json auctioned-inno.csv "TWSE+TPEX 競標公司(創新上市櫃)-完成"
