@@ -63,6 +63,8 @@ jobs:
 
           csvcut -c "股票代號" auctioned-filter.csv > 已開標名單.csv
           csvcut -c "股票代號" tobe-auctioned.csv > 未來競標名單.csv
+          csvcut -c "股票代號" auction-company-filter.csv > 競標公司(初上市櫃)名單.csv
+          
           # python csv-merge.py
           # csvstack auction-utf8-filter.csv 2024-utf8-filter.csv 2023-utf8-filter.csv 2022-utf8-filter.csv 2021-utf8-filter.csv 2020-utf8-filter.csv 2019-utf8-filter.csv 2018-utf8-filter.csv 2017-utf8-filter.csv> total-fiter.csv
 
