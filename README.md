@@ -3,12 +3,15 @@
 
 [![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/total.json)](total.json.csv)<br>
 [![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/cancel.json)](cancel.csv)<br>
+
 [![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auction-company.json)](auction-company.csv)<br>
-[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auction-company-filter.json)](auction-company-filter.csv)<br>
+=[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auction-company-filter.json)](auction-company-filter.csv)+
 [![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auction-company-inno.json)](auction-company-inno.csv)<br>
-[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned.json)](auctioned.csv)<br>
+=[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned.json)](auctioned.csv)+
 [![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/tobe-auctioned.json)](tobe-auctioned.csv)<br>
-[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned-filter.json)](auctioned-filter.csv)<br>
+
+[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned.json)](auctioned.csv)<br>
+=[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned-filter.json)](auctioned-filter.csv)+
 [![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned-inno.json)](auctioned-inno.csv)<br>
 
 
