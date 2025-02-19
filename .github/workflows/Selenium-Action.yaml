@@ -3,9 +3,10 @@ on:
   push:
     branches:
       - main
-  schedule:
-      - cron: "10 2 * * *"     # Runs every day at 2:10 AM UTC
-      - cron: "10 14 * * *"    # Runs every day at 2:10 PM UTC
+schedule:
+      - cron: "10 2 * * *"     # Runs every day at 10:10 AM Taiwan Time
+      - cron: "45 1 * * *"     # Runs every day at 09:45 AM Taiwan Time
+      - cron: "10 14 * * *"    # Runs every day at 10:10 PM Taiwan Time
   workflow_dispatch:
 jobs:
   scrape:
