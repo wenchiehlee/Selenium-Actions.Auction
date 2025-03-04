@@ -14,7 +14,8 @@
 =[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned-filter.json)](auctioned-filter.csv)+
 [![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned-inno.json)](auctioned-inno.csv)<br>
 
-
+[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auction-company-filter.json)](auction-company-filter.csv)<br>
+=[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/auctioned-filter.json)](auctioned-filter.csv)+[![Endpoint Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/main/tobe-auctioned.json)](tobe-auctioned.csv)
 
 ## Goals
 Update dialy on TWSE auction site on https://www.twse.com.tw/zh/announcement/auction.html and download the CSV as **auction.csv** and **auction-utf8.csv**.
