@@ -36,13 +36,13 @@ jobs:
           python ReadFile.py auction.csv Big5 | tail -n +2 |head -n -5 > total.csv # remove the first 1/last 5 line of the auction-utf8.csv
 
           cat 2024.csv  | tail -n +2 |head -n -6 >> total.csv
-          cat 2023.csv Big5    | tail -n +2 |head -n -6 >> total.csv
-          cat 2022.csv Big5    | tail -n +2 |head -n -6 >> total.csv
-          cat 2021.csv Big5    | tail -n +2 |head -n -6 >> total.csv
-          cat 2020.csv Big5    | tail -n +2 |head -n -6 >> total.csv
-          cat 2019.csv Big5    | tail -n +2 |head -n -6 >> total.csv
-          cat 2018.csv Big5    | tail -n +2 |head -n -6 >> total.csv
-          cat 2017.csv Big5    | tail -n +2 |head -n -6 >> total.csv
+          cat 2023.csv  | tail -n +2 |head -n -6 >> total.csv
+          cat 2022.csv  | tail -n +2 |head -n -6 >> total.csv
+          cat 2021.csv  | tail -n +2 |head -n -6 >> total.csv
+          cat 2020.csv  | tail -n +2 |head -n -6 >> total.csv
+          cat 2019.csv  | tail -n +2 |head -n -6 >> total.csv
+          cat 2018.csv  | tail -n +2 |head -n -6 >> total.csv
+          cat 2017.csv  | tail -n +2 |head -n -6 >> total.csv
 
           sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' total.csv
       - name: CSV filter
