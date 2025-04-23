@@ -62,9 +62,9 @@ jobs:
           csvgrep -c "發行性質"    -r "^(初上市|初上櫃)$" auctioned.csv > auctioned-filter.csv
           csvgrep -c "發行性質"    -r "^(初上市|初上櫃)$" tobe-auctioned.csv > tobe-auctioned-filter.csv
 
-          csvcut -c "股票代號,公司名稱,投標開始日, 投標結束日,開標日期,承銷價格(元),最低得標價格(元)" auctioned-filter.csv > 已開標名單.csv
-          csvcut -c "股票代號,公司名稱,投標開始日, 投標結束日,開標日期,承銷價格(元),最低得標價格(元)" tobe-auctioned.csv > 未來競標名單.csv
-          csvcut -c "股票代號,公司名稱,投標開始日, 投標結束日,開標日期,承銷價格(元),最低得標價格(元)" auction-company-filter.csv > "競標公司(初上市櫃)名單.csv"
+          csvcut -c "股票代號,公司名稱,投標開始日,投標結束日,開標日期,承銷價格(元),最低得標價格(元)" auctioned-filter.csv > 已開標名單.csv
+          csvcut -c "股票代號,公司名稱,投標開始日,投標結束日,開標日期,承銷價格(元),最低得標價格(元)" tobe-auctioned.csv > 未來競標名單.csv
+          csvcut -c "股票代號,公司名稱,投標開始日,投標結束日,開標日期,承銷價格(元),最低得標價格(元)" auction-company-filter.csv > "競標公司(初上市櫃)名單.csv"
           
           # python csv-merge.py
           # csvstack auction-utf8-filter.csv 2024-utf8-filter.csv 2023-utf8-filter.csv 2022-utf8-filter.csv 2021-utf8-filter.csv 2020-utf8-filter.csv 2019-utf8-filter.csv 2018-utf8-filter.csv 2017-utf8-filter.csv> total-fiter.csv
