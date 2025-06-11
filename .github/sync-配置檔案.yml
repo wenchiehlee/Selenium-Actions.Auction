@@ -4,10 +4,14 @@ group:
   - files:
       - source: .gitignore
         dest:   .gitignore
-      - source: .github/workflows/sync-up.yml
-        dest:   .github/workflows/sync-up.yml
-      - source: .github/sync.yml
-        dest:   .github/sync.yml
+      - source: .github/workflows/sync-up-配置檔案.yml
+        dest:   .github/workflows/sync-up-配置檔案.yml
+      - source: .github/workflows/sync-up-名單清單.yml
+        dest:   .github/workflows/sync-up-名單清單.yml
+      - source: .github/sync-配置檔案.yml
+        dest:   .github/sync-配置檔案.yml
+      - source: .github/sync-名單清單.yml
+        dest:   .github/sync-名單清單.yml
     repos: |
         wenchiehlee/mkdocs
         wenchiehlee/mkdocs-life
@@ -33,20 +37,3 @@ group:
         wenchiehlee/Python-Actions.PER
         wenchiehlee/Selenium-Actions.Auction
         wenchiehlee/Python-Actions.OpenAPI
-# 3rd group for GoPublic
-  - files:
-      - source: 觀察名單.csv
-        dest:   觀察名單.csv
-      - source: 觀察清單.csv
-        dest:   觀察清單.csv
-      - source: 未來競標名單.csv
-        dest:   未來競標名單.csv
-      - source: 已開標名單.csv
-        dest:   已開標名單.csv
-      - source: 未來競標清單.csv
-        dest:   未來競標清單.csv
-      - source: 已開標清單.csv
-        dest:   已開標清單.csv
-    repos: |
-        wenchiehlee/GoPublic
-        wenchiehlee/Selenium-Actions.Auction
