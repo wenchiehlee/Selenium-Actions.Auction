@@ -29,6 +29,9 @@ jobs:
       - name: Install xvfb
         run: sudo apt-get install xvfb
 
+      - name: download watchlist first
+        run: python Download觀察清單.py
+
       - name: Running the Python script
         run: python Selenium.py
       - name: Big5 to UTF8
@@ -92,6 +95,7 @@ jobs:
           python CountCSVLine.py auctioned-filter.json auctioned-filter.csv "TWSE+TPEX 競標公司(初上市櫃)-完成"
           python CountCSVLine.py auctioned-inno.json auctioned-inno.csv "TWSE+TPEX 競標公司(創新上市櫃)-完成"
           python CountCSVLine.py tobe-auctioned.json tobe-auctioned.csv "TWSE+TPEX 競標公司-未完成"
+          python CountCSVLine.py WatchList.json 觀察清單.csv "觀察清單"
       #- name: Create MD
       #  uses: petems/csv-to-md-table-action@master
       #  id: csv-table-output
