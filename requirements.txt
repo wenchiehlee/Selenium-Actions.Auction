@@ -6,3 +6,4 @@ csvkit
 csv2md
 win-unicode-console
 pandas
+requests
