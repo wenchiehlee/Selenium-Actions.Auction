@@ -148,7 +148,7 @@ jobs:
         if: steps.changed-csv-files.outputs.any_changed == 'true'     
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.repository_dispatch }}
+          token: ${{ secrets.REPO_SYNC_WENCHIEHLEE }}
           repository: wenchiehlee/twstock
           event-type: 2020-Now-utf8-filter.csv
       #- name: Push generated MD pages to another repository
