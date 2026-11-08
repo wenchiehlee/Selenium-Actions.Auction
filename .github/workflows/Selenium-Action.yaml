@@ -47,7 +47,7 @@ jobs:
           cat 2018.csv  | tail -n +2 |head -n -6 >> total.csv
           cat 2017.csv  | tail -n +2 |head -n -6 >> total.csv
 
-          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g' total.csv
+          sed -i '1s/證券名稱/公司名稱/g; 1s/證券代號/股票代號/g; 1s/承銷價格(元)/實際承銷價格(元)/g' total.csv
       - name: CSV filter
         run: |
           csvgrep -c "取消競價拍賣(流標或取消)"    -m "Y" total.csv > cancel.csv
