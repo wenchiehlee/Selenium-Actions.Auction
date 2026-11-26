@@ -147,7 +147,7 @@ jobs:
       - name: Repository Dispatch
         if: steps.changed-csv-files.outputs.any_changed == 'true'
         continue-on-error: true
-        uses: peter-evans/repository-dispatch@v3
+        uses: peter-evans/repository-dispatch@v4
         with:
           token: ${{ secrets.REPO_SYNC_WENCHIEHLEE || secrets.REPO_FILE_SYNC_WENCHIEHLEE || secrets.GITHUB_TOKEN }}
           repository: wenchiehlee/twstock
